@@ -1,0 +1,97 @@
+﻿Codi_Activitat_2019,Nom_Activitat,Codi_Activitat_2016,Codi_Principal_Activitat,Nom_Principal_Activitat,Codi_Sector_Activitat,Nom_Sector_Activitat,Codi_Grup_Activitat,Nom_Grup_Activitat,Comentari_Activitat
+1000000,Resta alimentació,1000,1,Actiu,1,Comerç al detall,1,Quotidià alimentari,
+1000010,Plats preparats (no degustació),100001,1,Actiu,1,Comerç al detall,1,Quotidià alimentari,
+1000020,Autoservei / Supermercat,100002,1,Actiu,1,Comerç al detall,1,Quotidià alimentari,
+1000030,Altres,100003,1,Actiu,1,Comerç al detall,1,Quotidià alimentari,"Inclou fruits secs, congelats, llaminadures, xurreries, ..."
+1001000,Begudes,1001,1,Actiu,1,Comerç al detall,1,Quotidià alimentari,
+1002000,Carn i Porc,1002,1,Actiu,1,Comerç al detall,1,Quotidià alimentari,
+1003000,Fruites i verdures,1003,1,Actiu,1,Comerç al detall,1,Quotidià alimentari,
+1005000,Ous i aus,1005,1,Actiu,1,Comerç al detall,1,Quotidià alimentari,
+1006000,"Pa, pastisseria i làctics",1006,1,Actiu,1,Comerç al detall,1,Quotidià alimentari,"inclou forns, venda xurros , venda xocolata, venda gelats dolços , llaminadures"
+1007000,Peix i marisc,1007,1,Actiu,1,Comerç al detall,1,Quotidià alimentari,
+1008000,Tabac i articles fumadors,1008,1,Actiu,1,Comerç al detall,2,Quotidià no alimentari,
+2000000,Combustibles i carburants,2000,1,Actiu,1,Comerç al detall,2,Quotidià no alimentari,
+2001000,Drogueria i perfumeria,2001,1,Actiu,1,Comerç al detall,2,Quotidià no alimentari,
+2002000,Farmàcies PARAFARMÀCIA,2002,1,Actiu,1,Comerç al detall,2,Quotidià no alimentari,
+2003000,"Herbolaris, dietètica i NUTRICIÓ",2003,1,Actiu,1,Comerç al detall,2,Quotidià no alimentari,
+3000000,Aparells domèstics,3000,1,Actiu,1,Comerç al detall,3,Parament de la llar,
+3001000,Floristeries,3001,1,Actiu,1,Comerç al detall,3,Parament de la llar,
+3002000,Material equipament llar,3002,1,Actiu,1,Comerç al detall,3,Parament de la llar,"Revestiments parets / terra, aparells il·luminació, material elèctric, parament llar, portes, finestres, bricolage, materials construcció, lavabos..."
+3003000,Mobles i articles fusta i metall,3003,1,Actiu,1,Comerç al detall,3,Parament de la llar,"Mobles, mobles d'oficina, mobles de cuina"
+3004000,Parament ferreteria,3004,1,Actiu,1,Comerç al detall,3,Parament de la llar,
+4000000,Calçat i pell,4000,1,Actiu,1,Comerç al detall,4,Equipament personal,
+4001000,"Joieria, rellotgeria i bijuteria",4001,1,Actiu,1,Comerç al detall,4,Equipament personal,
+4002000,Merceria,4002,1,Actiu,1,Comerç al detall,4,Equipament personal,Merceria i tèxtils per a la llar
+4003000,Vestir,4003,1,Actiu,1,Comerç al detall,4,Equipament personal,
+5000000,Informàtica,5000,1,Actiu,1,Comerç al detall,5,Oci i cultura,"ordenadors i software, mòbils"
+5001000,Joguines i esports,5001,1,Actiu,1,Comerç al detall,5,Oci i cultura,
+5003000,"Llibres, diaris i revistes",5003,1,Actiu,1,Comerç al detall,5,Oci i cultura,
+5004000,Música,5004,1,Actiu,1,Comerç al detall,5,Oci i cultura,
+6000000,Vehicles,6000,1,Actiu,1,Comerç al detall,6,Automoció,Vehicles i accessoris
+7000000,Grans magatzems i hipermercats,7000,1,Actiu,1,Comerç al detall,7,Altres,Inclou Corte Inglés
+7001000,Maquinària,7001,1,Actiu,1,Comerç al detall,7,Altres,
+3005000,"Segells, monedes i antiguitats",3005,1,Actiu,1,Comerç al detall,3,Parament de la llar,
+7003000,Òptiques i fotografia,7003,1,Actiu,1,Comerç al detall,7,Altres,
+7003010,Òptiques ,700301,1,Actiu,1,Comerç al detall,7,Altres,
+7003020,Fotografia,700302,1,Actiu,1,Comerç al detall,7,Altres,
+7004000,Souvenirs i basars,7004,1,Actiu,1,Comerç al detall,7,Altres,
+7004010,Souvenirs,700401,1,Actiu,1,Comerç al detall,7,Altres,Productes enfocats a turisme
+7004020,Basars,700402,1,Actiu,1,Comerç al detall,7,Altres,Tota la resta
+7005000,Altres,7005,1,Actiu,1,Comerç al detall /Engròs,7,Altres,
+8000000,Activitats immobiliàries,8000,1,Actiu,2,Serveis,8,Activitats immobiliàries,"Compravendes, lloguers, agents de la propietat"
+9000000,Ensenyament,9000,1,Actiu,2,Serveis,9,Ensenyament,mirar annex
+1100000,Finances i assegurances,11000,1,Actiu,2,Serveis,11,Finances i assegurances,inclou transferències de diners
+1200000,"Manteniment, neteja i similars",12000,1,Actiu,2,Serveis,12,"Manteniment, neteja i producció","Activitats jardineria, neteja, sanejament..."
+1300000,Reparacions (Electrodomèstics i automòbils),13000,1,Actiu,2,Serveis,13,Reparacions (Electrodomèstics i automòbils),Inclou reparacions vehicles de mobilitat personal
+1400000,serveis de menjar i begudes,14000,1,Actiu,2,Serveis,14,"Restaurants, bars i hotels (Inclòs hostals, pensions i fondes)",
+1111111,Equipaments culturals i recreatius,10000,1,Actiu,2,Serveis,10,Equipaments culturals i recreatius,mirar annex
+44,Ús Habitatge,*0000044,0,Sense activitat Econòmica,4,Ús Habitatge,0,Grup no definit,
+50,En reforma,*0000050,0,Sense activitat Econòmica,5,En reforma,0,Grup no definit,canvi de negoci / cal classificar-lo si anuncia l'activitat
+42,Sense informació - Havia tingut activitat (rètol),*0000042,0,Sense activitat Econòmica,4,Sense informació - Havia tingut activitat (rètol),0,Grup no definit,
+41,Sense informació,*0000041,0,Sense activitat Econòmica,4,Sense informació,0,Grup no definit,
+30,Locals buits en venda i lloguer,*0000030,0,Sense activitat Econòmica,3,Locals buits en venda i lloguer,0,Grup no definit,
+20,Locals buits en lloguer,*0000020,0,Sense activitat Econòmica,2,Locals buits en lloguer,0,Grup no definit,
+10,Locals buits en venda,*0000010,0,Sense activitat Econòmica,1,Locals buits en venda,0,Grup no definit,
+1400001,Bars   / CIBERCAFÈ,1400001,1,Actiu,2,Serveis,14,"Restaurants, bars i hotels (Inclòs hostals, pensions i fondes)","Preval la classificació del 2016, en segona instància rètol, diferent de restaurant és bar"
+1400002,Restaurants,1400002,1,Actiu,2,Serveis,14,"Restaurants, bars i hotels (Inclòs hostals, pensions i fondes)","Preval la classificació del 2016, en segona instància rètol, si posa restaurant, és restaurant"
+1400003,Serveis de menjar take away MENJAR RÀPID,1400003,1,Actiu,2,Serveis,14,"Restaurants, bars i hotels (Inclòs hostals, pensions i fondes)",
+1400004,Bars especials amb actuació / Bars musicals / Discoteques /PUB,1400004,1,Actiu,2,Serveis,14,"Restaurants, bars i hotels (Inclòs hostals, pensions i fondes)",
+1400005,Xocolateries / Geladeries / Degustació,1400005,1,Actiu,2,Serveis,14,"Restaurants, bars i hotels (Inclòs hostals, pensions i fondes)",
+1400006,Altres ( per exemple VENDING),1400006,1,Actiu,2,Serveis,14,"Restaurants, bars i hotels (Inclòs hostals, pensions i fondes)",
+1400100,serveis d'allotjament,14001,1,Actiu,2,Serveis,14,"Restaurants, bars i hotels (Inclòs hostals, pensions i fondes)",
+1400200,altres,14002,1,Actiu,2,Serveis,14,"Restaurants, bars i hotels (Inclòs hostals, pensions i fondes)",
+1500000,Sanitat i assistència,15000,1,Actiu,2,Serveis,15,Sanitat i assistència,mirar annex
+1600000,Pàrquings i garatges,16000,1,Actiu,2,Serveis,16,Altres,només com activitat econòmica (no exclusiu veïns)
+1600100,Activitats de transport i emmagatzematge,16001,1,Actiu,2,Serveis,16,Altres,
+1600101,Activitats de transport ,1600101,1,Actiu,2,Serveis,16,Altres,"inclou lloguers de tot tipus de vehicle de mobilitat, transports, mudances, missatgers) activitats missatgeria, postals i correus"
+1600102,Activitats emmagatzematge,1600102,1,Actiu,2,Serveis,16,Altres,"Inclou lockers, magatzems de distribució, magatzems, trasters"
+1600200,Serveis de telecomunicacions,16002,1,Actiu,2,Serveis,16,Altres,"Act. Cinematogràfiques, vídeo, tv, gravació so, edició musical, programes informàtics, "
+1600300,Locutoris,16003,1,Actiu,2,Serveis,16,Altres,
+1600400,Serveis a les empreses i oficines,16004,1,Actiu,2,Serveis,16,Altres,"inclou coworking, assessories, act jurídiques…quan hi hagi diferents activitats juntes"
+1600500,Agències de viatge,16005,1,Actiu,2,Serveis,16,Altres,
+1600600,Perruqueries,16006,1,Actiu,2,Serveis,16,Altres,
+1600700,Centres d'estètica,16007,1,Actiu,2,Serveis,16,Altres,"inclou balnearis urbans, serveis estètica, depilació, ungles, bronzejat,…"
+1600800,Tintoreries,16008,1,Actiu,2,Serveis,16,Altres,inclou bugaderies
+1600900,Veterinaris / Mascotes,16009,1,Actiu,2,Serveis,16,Altres,no comerç al detall només serveis
+1611000,Arranjaments,16110,1,Actiu,2,Serveis,16,Altres,"inclou roba, calçat, claus, ordinadors, bicicletes, efectes personals…"
+1611100,Serveis Socials,16111,1,Actiu,2,Serveis,16,Altres,mirar annex
+1611200,Altres,16112,1,Actiu,2,Serveis,16,Altres,per ex. ESCAPE ROOM
+1700000,Altres,17000,1,Actiu,3,Altres,17,Altres,
+1700100,Administració,17001,1,Actiu,3,Altres,17,Altres,mirar annex
+1700200,Associacions,17002,1,Actiu,3,Altres,17,Altres,"mirar annex, també canàbiques"
+1700300,Esports,17003,1,Actiu,3,Altres,17,Altres,mirar annex
+1700310,Gimnàs /fitnes,170031,1,Actiu,3,Altres,17,Altres,
+1700320,Altres equipaments esportius,170032,1,Actiu,3,Altres,17,Altres,
+1700400,Equipaments religiosos,17004,1,Actiu,3,Altres,17,Altres,
+1700500,Activitats industrials,17005,1,Actiu,3,Altres,17,Altres,Indústria manufacturera/tallers artesanals
+1700600,Activitats de la construcció,17006,1,Actiu,3,Altres,17,Altres,"reformes cuines, banys…"
+1700700,Arts gràfiques,17007,1,Actiu,3,Altres,17,Altres,
+1700800,Fabricació tèxtil,17008,1,Actiu,3,Altres,17,Altres,"confecció cortines, roba…"
+444,Activitat no definida,444,2,Sense informació,4,Sense informació,0,Grup no definit,Estava en la base del cens 2016
+222,Activitat no definida,222,0,Sense activitat Econòmica,2,Locals buits en lloguer,0,Grup no definit,Estava en la base del cens 2016
+7002000,"Segells, monedes i antiguitats",7002,1,Actiu,1,Comerç al detall,7,Altres,Estava en la base del cens 2016
+111,Activitat no definida,111,0,Sense activitat Econòmica,1,Locals buits en venda,0,Grup no definit,Estava en la base del cens 2016
+43,ús particular/veïnal,*0000043,0,Sense activitat Econòmica,4,ús particular/veïnal,0,Grup no definit,inclou local usat com a parquing privat (no gual)
+555,Activitat no definida,555,0,Sense activitat Econòmica,5,En reforma,0,Grup no definit,Estava en la base del cens 2016
+333,Activitat no definida,333,0,Sense activitat Econòmica,3,Locals buits en venda i lloguer,0,Grup no definit,Estava en la base del cens 2016
+0,No definida,,0,No definit,0,No definit,0,No definit,
