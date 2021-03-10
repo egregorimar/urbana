@@ -6,6 +6,7 @@ dependencies:
   - configparser
   - flake8
   - graphviz
+  - geopandas
   - isort
   - mypy
   - pre-commit
