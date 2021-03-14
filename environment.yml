@@ -8,6 +8,7 @@ dependencies:
   - graphviz
   - geopandas
   - isort
+  - lxml
   - mypy
   - pre-commit
   - pytest
