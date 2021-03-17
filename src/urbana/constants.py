@@ -21,3 +21,6 @@ DIR_REFERENCES = DIR_REPO / "references"
 
 # Path to various locations within the documentation
 DIR_DOCS = DIR_REPO / "docs"
+
+# Random state
+RANDOM_STATE = 42
