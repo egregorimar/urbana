@@ -9,6 +9,7 @@ dependencies:
   - geopandas
   - isort
   - lxml
+  - missingno
   - mypy
   - openpyxl
   - pandas-profiling >= 2.0
