@@ -16,6 +16,7 @@ dependencies:
   - pytest
   - pytest-cov
   - python=3.9
+  - scikit-learn
   - sphinx >= 1.7
   - sphinx-automodapi
   - sphinxcontrib-napoleon
