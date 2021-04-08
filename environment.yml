@@ -25,6 +25,7 @@ dependencies:
   - sphinxcontrib-napoleon
   - sphinx_rtd_theme
   - urbanaccess  
+  - yellowbrick
 # jupyter lab/notebook tools
   - ipykernel
   - nb_black
