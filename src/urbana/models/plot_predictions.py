@@ -11,6 +11,7 @@ class PredictedAccuracy:
 
         self.y_series = y_series
         self.yhat_series = yhat_series
+        self.eps = self.y_series - self.yhat_series
 
     @staticmethod
     def regression_accuracy_metrics(y, yhat):
@@ -43,23 +44,55 @@ class PredictedAccuracy:
         )
     
     def plot_scatter(self, main_title="Actual vs predicted measure"):
-        y_max = self.y_series.max()
-        y_min = self.y_series.min()
-        x_max = self.yhat_series.max()
-        x_min = self.yhat_series.min()
-        x_max_min = x_max - x_min
-        y_max_min = y_max - y_min
-        x_padding = 0.1 * x_max_min
-        y_padding = 0.1 * y_max_min
+        plt.figure(0)
+        y_max0 = self.y_series.max()
+        y_min0 = self.y_series.min()
+        x_max0 = self.yhat_series.max()
+        x_min0 = self.yhat_series.min()
+        x_max_min0 = x_max0 - x_min0
+        y_max_min0 = y_max0 - y_min0
+        x_padding0 = 0.1 * x_max_min0
+        y_padding0 = 0.1 * y_max_min0
 
-        axis_min = min(x_min - x_padding, y_min - y_padding)
-        axis_max = max(x_max + x_padding, y_max + y_padding)
+        axis_min0 = min(x_min0 - x_padding0, y_min0 - y_padding0)
+        axis_max0 = max(x_max0 + x_padding0, y_max0 + y_padding0)
 
-        plt.scatter(self.yhat_series, self.y_series)
-        plt.plot([axis_min,axis_max], [axis_min,axis_max], color='c')
+        plt.axis('square')
+        plt.rcParams["axes.grid"] = False
 
-        plt.xlim([axis_min, axis_max])
-        plt.ylim([axis_min, axis_max])
+        plt.xlim([axis_min0, axis_max0])
+        plt.ylim([axis_min0, axis_max0])
         plt.xlabel(str(self.yhat_series.name))
         plt.ylabel(str(self.y_series.name))
         plt.title(str(main_title)+"\n"+str(self.pretty_metrics()), fontsize=10)
+        
+        plt.scatter(self.yhat_series, self.y_series)
+        plt.plot([axis_min0,axis_max0], [axis_min0,axis_max0], color='c')
+
+
+
+
+        plt.figure(1)
+        x_max1 = self.yhat_series.max()
+        x_min1 = self.yhat_series.min()
+        y_max1 = self.eps.max()
+        y_min1 = self.eps.min()
+        x_max_min1 = x_max1 - x_min1
+        y_max_min1 = y_max1 - y_min1
+        x_padding1 = 0.1 * x_max_min1
+        y_padding1 = 0.1 * y_max_min1
+
+        axis_min1 = min(x_min1 - x_padding1, y_min1 - y_padding1)
+        axis_max1 = max(x_max1 + x_padding1, y_max1 + y_padding1)
+        
+        plt.rcParams["axes.grid"] = False
+
+        plt.scatter(self.yhat_series, self.eps)
+        plt.plot([axis_min0,axis_max0], [0,0], 'c--')
+
+        plt.xlim([x_min1 - x_padding1, x_max1 + x_padding1])
+        plt.ylim([-axis_max1, axis_max1])
+        plt.xlabel("Predicted value")
+        plt.ylabel("Error")
+        plt.title("Errors in predictions")
+
