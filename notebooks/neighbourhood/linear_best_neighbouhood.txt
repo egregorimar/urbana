@@ -1,0 +1,9 @@
+POI_Esthetics
+Distance_Center
+Nationality_UK
+POI_Culture
+POI_Restaurants_Hotels
+Education_University
+Percentage_Age_25_39
+Household
+POI_Education

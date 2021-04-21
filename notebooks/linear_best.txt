@@ -1,0 +1,10 @@
+Distance_Center
+Nationality_UK
+Nationality_Spain
+POI_Restaurants_Hotels
+Nationality_Italy
+Percentage_Age_65_Plus
+POI_Education
+Education_University
+Percentage_Age_0_14
+Nationality_France
