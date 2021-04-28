@@ -43,7 +43,7 @@ class PredictedAccuracy:
             ]
         )
     
-    def plot_scatter(self, main_title="Actual vs predicted measure"):
+    def plot_scatter(self, main_title="Actual vs predicted measure", save_fig=False, root_name="generic_figure"):
         plt.figure(0)
         y_max0 = self.y_series.max()
         y_min0 = self.y_series.min()
@@ -69,6 +69,8 @@ class PredictedAccuracy:
         plt.scatter(self.yhat_series, self.y_series)
         plt.plot([axis_min0,axis_max0], [axis_min0,axis_max0], color='c')
 
+        if save_fig==True:
+            plt.savefig(str(root_name) + "0.jpg")
 
 
 
@@ -95,4 +97,6 @@ class PredictedAccuracy:
         plt.xlabel("Predicted value")
         plt.ylabel("Error")
         plt.title("Errors in predictions")
-
+        
+        if save_fig==True:
+            plt.savefig(str(root_name) + "1.jpg")
