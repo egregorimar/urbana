@@ -70,7 +70,7 @@ class PredictedAccuracy:
         plt.plot([axis_min0,axis_max0], [axis_min0,axis_max0], color='c')
 
         if save_fig==True:
-            plt.savefig(str(root_name) + "0.jpg")
+            plt.savefig(str(root_name) + "0.svg", format="svg")
 
 
 
@@ -99,4 +99,4 @@ class PredictedAccuracy:
         plt.title("Errors in predictions")
         
         if save_fig==True:
-            plt.savefig(str(root_name) + "1.jpg")
+            plt.savefig(str(root_name) + "1.svg", format="svg")
