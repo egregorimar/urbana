@@ -1,8 +1,0 @@
-Distance_Center
-Nationality_UK
-Nationality_Spain
-POI_Restaurants_Hotels
-Nationality_Italy
-Percentage_Age_65_Plus
-Percentage_Age_0_14
-POI_Souvenirs_Thrift_Store
