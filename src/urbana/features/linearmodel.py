@@ -56,11 +56,11 @@ def LinearModel(YEAR, MONTH, VARIABLE_TO_PREDICT):
 
     # Create folders to store the data
 
-    DIR_DATE = DIR_DATA / "processed/{}_{:02d}".format(int(str(YEAR)[2:4]), MONTH)
+    DIR_DATE = DIR_DATA / "processed/{}_{:02d}".format(YEAR, MONTH)
     DIR_LINEAR = DIR_DATE / "01_linear"
 
     if SAVE_FIGS or SAVE_MODEL:
-        folder_list = [DIR_DATE, DIR_LINEAR]
+        folder_list = [DIR_DATE, DIR_LINEAR, DIR_DATA / "processed/01_linear"]
 
         import os
 
@@ -329,7 +329,9 @@ def LinearModel(YEAR, MONTH, VARIABLE_TO_PREDICT):
 
     y_pred_rfe = model.predict(X).round()
     pa_rfe = PredictedAccuracy(y, y_pred_rfe)
-    pa_rfe.plot_scatter(save_fig=SAVE_FIGS, root_name=DIR_LINEAR / "selection_model")
+    pa_rfe.plot_scatter(save_fig=SAVE_FIGS, root_name=DIR_LINEAR / "model")
+    pa_rfe.plot_errors(save_fig=SAVE_FIGS, root_name=DIR_LINEAR / "model")
+
 
     del pa_rfe
 
@@ -355,7 +357,7 @@ def LinearModel(YEAR, MONTH, VARIABLE_TO_PREDICT):
 
 
     if SAVE_FIGS:
-        plt.savefig(DIR_LINEAR / "selection_relative_errors.svg", format="svg")
+        plt.savefig(DIR_LINEAR / "relative_errors.svg", format="svg")
 
     plt.close()
 
@@ -387,7 +389,11 @@ def LinearModel(YEAR, MONTH, VARIABLE_TO_PREDICT):
     pa_trans = PredictedAccuracy(y_transformed, y_pred_transformed)
     pa_trans.plot_scatter(
         save_fig=SAVE_FIGS,
-        root_name=DIR_LINEAR / "selection_transformed_model",
+        root_name=DIR_LINEAR / "transformed_model",
+    )
+    pa_trans.plot_errors(
+        save_fig=SAVE_FIGS,
+        root_name=DIR_LINEAR / "transformed_model",
     )
     del pa_trans
 
@@ -422,8 +428,14 @@ def LinearModel(YEAR, MONTH, VARIABLE_TO_PREDICT):
         columns=X_rfe.columns,
     )
 
-    medians_rfe = coefs_rfe.median()
+
+    coefs_rfe["Intercept"] = pd.Series(
+        [est.regressor_.named_steps["regressor"].intercept_ for est in cv_rfe["estimator"]]
+    )
+
+    medians_rfe = coefs_rfe.drop(["Intercept"], axis=1).median()
     medians_rfe = medians_rfe.reindex(medians_rfe.abs().sort_values(ascending=False).index)
+    medians_rfe = medians_rfe.append(pd.Series({"Intercept": 0}, index=["Intercept"]))
     coefs_rfe = coefs_rfe[medians_rfe.index]
 
     limit_value = (
@@ -438,12 +450,21 @@ def LinearModel(YEAR, MONTH, VARIABLE_TO_PREDICT):
     sns.boxplot(ax=ax, data=coefs_rfe, orient="h", color="cyan", saturation=0.5)
     plt.axvline(x=0, color="red")
 
-    ax.set_title("Coefficient robustness", fontsize=20, y=1.01)
+    plt.figtext(0.51, 0.9, "Linear Model: Coefficient robustness", fontsize=20, ha="center")
+    plt.figtext(
+        0.51,
+        0.885,
+        "{}-{:02d}".format(YEAR, MONTH),
+        fontsize=18,
+        ha="center",
+    )
     ax.set_xlim(-limit_value, limit_value)
     ax.set_xlabel("Coefficient value", fontsize=15)
 
     if SAVE_FIGS:
-        plt.savefig(DIR_LINEAR / "selection_sensitivity.svg", format="svg")
+        plt.savefig(DIR_LINEAR / "sensitivity.svg", format="svg")
+        plt.savefig(DIR_DATA / "processed/01_linear/{}_{:02d}_sensitivity.svg".format(YEAR, MONTH), format="svg")
+        
 
     plt.close()
 
@@ -454,7 +475,8 @@ def LinearModel(YEAR, MONTH, VARIABLE_TO_PREDICT):
         quants = coefs_rfe.quantile([0.25, 0.5, 0.75]).T
         quants.columns = ["Q1", "M", "Q3"]
         quants.index.name = "Feature"
-        quants.to_csv(DIR_LINEAR / "linear_quants.csv")
+        quants.to_csv(DIR_LINEAR / "coefficients.csv")
+        quants.to_csv(DIR_DATA / "processed/01_linear/{}_{:02d}_coefficients.csv".format(YEAR, MONTH))
 
     print("Done with " + str(YEAR) + "-" + str(MONTH))
     print("##################################")

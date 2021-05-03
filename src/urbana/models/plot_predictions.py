@@ -44,7 +44,8 @@ class PredictedAccuracy:
         )
     
     def plot_scatter(self, save_fig=False, root_name="generic_figure"):
-        plt.figure(0)
+        plt.close()
+        plt.figure(figsize=(15,15))
         y_max0 = self.y_series.max()
         y_min0 = self.y_series.min()
         x_max0 = self.yhat_series.max()
@@ -56,7 +57,6 @@ class PredictedAccuracy:
 
         axis_min0 = min(x_min0 - x_padding0, y_min0 - y_padding0)
         axis_max0 = max(x_max0 + x_padding0, y_max0 + y_padding0)
-
         plt.axis('square')
         plt.rcParams["axes.grid"] = False
 
@@ -64,17 +64,18 @@ class PredictedAccuracy:
         plt.ylim([axis_min0, axis_max0])
         plt.xlabel("Predicted value")
         plt.ylabel("Real value")
-        plt.title(str(self.y_series.name)+"\n"+str(self.pretty_metrics()), fontsize=10)
-        
+        plt.title(str(self.y_series.name)+"\n"+str(self.pretty_metrics()), fontsize=15)
         plt.scatter(self.yhat_series, self.y_series)
         plt.plot([axis_min0,axis_max0], [axis_min0,axis_max0], color='c')
 
         if save_fig==True:
             plt.savefig(str(root_name) + "0.svg", format="svg")
 
-
-
-        plt.figure(1)
+        plt.show()
+    
+    def plot_errors(self, save_fig=False, root_name="generic_figure"):
+        plt.close()
+        plt.figure(figsize=(15,15))
         x_max1 = self.yhat_series.max()
         x_min1 = self.yhat_series.min()
         y_max1 = self.eps.max()
@@ -90,13 +91,15 @@ class PredictedAccuracy:
         plt.rcParams["axes.grid"] = False
 
         plt.scatter(self.yhat_series, self.eps)
-        plt.plot([axis_min0,axis_max0], [0,0], 'c--')
+        plt.plot([axis_min1,axis_max1], [0,0], 'c--')
 
         plt.xlim([x_min1 - x_padding1, x_max1 + x_padding1])
         plt.ylim([-axis_max1, axis_max1])
         plt.xlabel("Predicted value")
         plt.ylabel("Error")
-        plt.title(self.y_series.name)
+        plt.title(self.y_series.name, fontsize=15)
         
         if save_fig==True:
             plt.savefig(str(root_name) + "1.svg", format="svg")
+
+        plt.show()
