@@ -56,11 +56,12 @@ def LinearModel(YEAR, MONTH, VARIABLE_TO_PREDICT):
 
     # Create folders to store the data
 
-    DIR_DATE = DIR_DATA / "processed/{}_{:02d}".format(YEAR, MONTH)
-    DIR_LINEAR = DIR_DATE / "01_linear"
+    DIR_VAR = DIR_DATA / "processed/{}".format(VARIABLE_TO_PREDICT)
+    DIR_MONTH = DIR_VAR / "{}_{:02d}".format(YEAR, MONTH)
+    DIR_LINEAR = DIR_MONTH / "01_linear"
 
     if SAVE_FIGS or SAVE_MODEL:
-        folder_list = [DIR_DATE, DIR_LINEAR, DIR_DATA / "processed/01_linear"]
+        folder_list = [DIR_VAR, DIR_MONTH, DIR_LINEAR, DIR_VAR / "01_linear"]
 
         import os
 
@@ -361,7 +362,11 @@ def LinearModel(YEAR, MONTH, VARIABLE_TO_PREDICT):
 
     plt.close()
 
-
+    if SAVE_MODEL:
+        geo_info[["Chosen_Error"]].to_csv(DIR_LINEAR / "relative_errors.csv")
+        df_predictions = pd.DataFrame(y_pred_rfe, index=geo_info.index, columns=["Predictions"])
+        df_predictions.to_csv(DIR_LINEAR / "predictions.csv")  
+        df_predictions.to_csv(DIR_VAR / "01_linear/{}_{:02d}_predictions.csv".format(YEAR, MONTH))  
 
     # from yellowbrick.regressor.residuals import residuals_plot
 
@@ -463,7 +468,7 @@ def LinearModel(YEAR, MONTH, VARIABLE_TO_PREDICT):
 
     if SAVE_FIGS:
         plt.savefig(DIR_LINEAR / "sensitivity.svg", format="svg")
-        plt.savefig(DIR_DATA / "processed/01_linear/{}_{:02d}_sensitivity.svg".format(YEAR, MONTH), format="svg")
+        plt.savefig(DIR_VAR / "01_linear/{}_{:02d}_sensitivity.svg".format(YEAR, MONTH), format="svg")
         
 
     plt.close()
@@ -472,11 +477,8 @@ def LinearModel(YEAR, MONTH, VARIABLE_TO_PREDICT):
 
 
     if SAVE_MODEL:
-        quants = coefs_rfe.quantile([0.25, 0.5, 0.75]).T
-        quants.columns = ["Q1", "M", "Q3"]
-        quants.index.name = "Feature"
-        quants.to_csv(DIR_LINEAR / "coefficients.csv")
-        quants.to_csv(DIR_DATA / "processed/01_linear/{}_{:02d}_coefficients.csv".format(YEAR, MONTH))
+        coefs_rfe.to_csv(DIR_LINEAR / "coefficients.csv")
+        coefs_rfe.to_csv(DIR_VAR / "01_linear/{}_{:02d}_coefficients.csv".format(YEAR, MONTH))
 
     print("Done with " + str(YEAR) + "-" + str(MONTH))
     print("##################################")
