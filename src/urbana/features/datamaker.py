@@ -9,7 +9,7 @@ from urbana.constants import DIR_REPO, DIR_DATA
 
 def DataMaker(YEAR, MONTH):
 
-    print("Starting with " + str(YEAR) + "-" + str(MONTH))
+    print("Starting with {}-{:02d}".format(YEAR, MONTH))
 
     import warnings
 
@@ -26,7 +26,15 @@ def DataMaker(YEAR, MONTH):
     # 
     # https://opendata-ajuntament.barcelona.cat/data/en/dataset/20170706-districtes-barris
 
+    ALLOWED_YEARS = [2017, 2018]
 
+    if YEAR not in ALLOWED_YEARS:
+        raise Exception("Please select a year within: {}".format(ALLOWED_YEARS))
+
+    if YEAR == 2018 and MONTH == 3:
+        raise Exception(
+            "Month 3 (March) is not available for 2018. Please choose a different month."
+        )
 
 
     geo_info = gpd.read_file(DIR_DATA / "raw/0301100100_UNITATS_ADM_POLIGONS.json")
@@ -243,94 +251,15 @@ def DataMaker(YEAR, MONTH):
     # # Inside Airbnb
 
 
-
-
-    # Dates in which the files were uploaded (so far)
-    airbnb_dates = [
-        "2015-04-30",
-        "2015-07-17",
-        "2015-09-04",
-        "2015-10-02",
-        "2016-01-03",
-        "2016-11-07",
-        "2016-12-08",
-        "2017-01-04",
-        "2017-02-09",
-        "2017-03-06",
-        "2017-04-08",
-        "2017-05-07",
-        "2017-06-05",
-        "2017-07-06",
-        "2017-08-06",
-        "2017-09-12",
-        "2017-10-07",
-        "2017-11-13",
-        "2017-12-09",
-        "2018-01-17",
-        "2018-02-07",
-        "2018-04-12",
-        "2018-05-14",
-        "2018-06-09",
-        "2018-07-10",
-        "2018-08-14",
-        "2018-09-11",
-        "2018-10-10",
-        "2018-11-07",
-        "2018-12-10",
-        "2019-01-14",
-        "2019-02-06",
-        "2019-03-08",
-        "2019-04-10",
-        "2019-05-14",
-        "2019-06-07",
-        "2019-07-10",
-        "2019-08-12",
-        "2019-09-17",
-        "2019-10-16",
-        "2019-11-09",
-        "2019-12-10",
-        "2020-01-10",
-        "2020-02-16",
-        "2020-03-16",
-        "2020-04-16",
-        "2020-05-11",
-        "2020-06-13",
-        "2020-07-17",
-        "2020-08-24",
-        "2020-09-12",
-        "2020-10-12",
-        "2020-11-06",
-        "2020-12-16",
-        "2021-01-12",
-        "2021-02-09",
-    ]
-
-    # Choose the data to download
-    airbnb_chosen = [
-        i for i in airbnb_dates if i.startswith(str(YEAR) + "-" + "{:02d}".format(MONTH))
-    ]
-    airbnb_chosen = pd.to_datetime(airbnb_chosen[0], format="%Y-%m-%d", errors="ignore")
-
-
-
-
-
     airbnb_number_sect = sect[["N_district", "N_section"]]
     airbnb_price_sect = sect[["N_district", "N_section"]]
     airbnb_price_person_sect = sect[["N_district", "N_section"]]
     airbnb_loc_review_sect = sect[["N_district", "N_section"]]
 
     ###########################################################
-    airbnb_url = (
-        "http://data.insideairbnb.com/spain/catalonia/barcelona/"
-        + airbnb_chosen.strftime("%Y-%m-%d")
-        + "/data/listings.csv.gz"
+    df = pd.read_csv(
+        DIR_DATA / "raw/inside_airbnb/listings_{}_{:02d}.csv".format(YEAR, MONTH)
     )
-    df = pd.read_csv(airbnb_url)
-
-    #print("File opened succesfully!")
-
-    date = airbnb_chosen.strftime("%Y_%m")
 
     # Some rows are wrong
     df = df[df["price"].str.contains("-") == False]
@@ -893,8 +822,8 @@ def DataMaker(YEAR, MONTH):
         )
     sect.drop(["geometry"], axis=1, inplace=True)
     sect.to_csv(
-        DIR_DATA / "interim/sections_{}_{:02d}.csv".format(int(str(YEAR)[2:4]), MONTH)
+        DIR_DATA / "interim/sections_{}_{:02d}.csv".format(YEAR, MONTH)
     )
 
-    print("Done with " + str(YEAR) + "-" + str(MONTH))
+    print("Done with {}-{:02d}".format(YEAR, MONTH))
     print("##################################")

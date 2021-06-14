@@ -34,7 +34,7 @@ def LinearModel(YEAR, MONTH, VARIABLE_TO_PREDICT):
 
     mpl.use('Agg')
 
-    print("Starting with " + str(YEAR) + "-" + str(MONTH))
+    print("Starting with {}-{:02d}".format(YEAR, MONTH))
 
 
     OUTPUT_WARNINGS = False
@@ -54,6 +54,17 @@ def LinearModel(YEAR, MONTH, VARIABLE_TO_PREDICT):
         warnings.filterwarnings("ignore")
 
 
+    ALLOWED_YEARS = [2017, 2018]
+
+    if YEAR not in ALLOWED_YEARS:
+        raise Exception("Please select a year within: {}".format(ALLOWED_YEARS))
+
+    if YEAR == 2018 and MONTH == 3:
+        raise Exception(
+            "Month 3 (March) is not available for 2018. Please choose a different month."
+        )
+
+
     # Create folders to store the data
 
     DIR_VAR = DIR_DATA / "processed/{}".format(VARIABLE_TO_PREDICT)
@@ -70,10 +81,16 @@ def LinearModel(YEAR, MONTH, VARIABLE_TO_PREDICT):
                 os.makedirs(folder)
 
 
+    PATH_TO_FILE = DIR_DATA / "interim/sections_{}_{:02d}.csv".format(YEAR, MONTH)
+    if os.path.isfile(PATH_TO_FILE) is False:
+        raise Exception(
+            'Please run first the notebook "00acquisition.ipynb" with the same date and "SAVE_DATA" set to True'
+        )
+
     np.random.seed(RANDOM_STATE)
 
     sect = pd.read_csv(
-        DIR_DATA / "interim/sections_{}_{:02d}.csv".format(int(str(YEAR)[2:4]), MONTH),
+        DIR_DATA / "interim/sections_{}_{:02d}.csv".format(YEAR, MONTH),
     )
 
     sect.set_index("Tag", inplace=True)
@@ -366,7 +383,7 @@ def LinearModel(YEAR, MONTH, VARIABLE_TO_PREDICT):
         geo_info[["Chosen_Error"]].to_csv(DIR_LINEAR / "relative_errors.csv")
         df_predictions = pd.DataFrame(y_pred_rfe, index=geo_info.index, columns=["Predictions"])
         df_predictions.to_csv(DIR_LINEAR / "predictions.csv")  
-        df_predictions.to_csv(DIR_VAR / "01_linear/{}_{:02d}_predictions.csv".format(YEAR, MONTH))  
+        df_predictions.to_csv(DIR_VAR / "01_linear/predictions_{}_{:02d}.csv".format(YEAR, MONTH))  
 
     # from yellowbrick.regressor.residuals import residuals_plot
 
@@ -468,7 +485,7 @@ def LinearModel(YEAR, MONTH, VARIABLE_TO_PREDICT):
 
     if SAVE_FIGS:
         plt.savefig(DIR_LINEAR / "sensitivity.svg", format="svg")
-        plt.savefig(DIR_VAR / "01_linear/{}_{:02d}_sensitivity.svg".format(YEAR, MONTH), format="svg")
+        plt.savefig(DIR_VAR / "01_linear/sensitivity_{}_{:02d}.svg".format(YEAR, MONTH), format="svg")
         
 
     plt.close()
@@ -478,7 +495,7 @@ def LinearModel(YEAR, MONTH, VARIABLE_TO_PREDICT):
 
     if SAVE_MODEL:
         coefs_rfe.to_csv(DIR_LINEAR / "coefficients.csv")
-        coefs_rfe.to_csv(DIR_VAR / "01_linear/{}_{:02d}_coefficients.csv".format(YEAR, MONTH))
+        coefs_rfe.to_csv(DIR_VAR / "01_linear/coefficients_{}_{:02d}.csv".format(YEAR, MONTH))
 
-    print("Done with " + str(YEAR) + "-" + str(MONTH))
+    print("Done with {}-{:02d}".format(YEAR, MONTH))
     print("##################################")
