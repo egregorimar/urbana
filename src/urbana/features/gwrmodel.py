@@ -272,15 +272,6 @@ def GWRModel(YEAR, MONTH, VARIABLE_TO_PREDICT):
     gwr_model.predict(coords, X_transformed)
     y_predicted = gwr_results.predictions
 
-
-    # Save to csv
-
-    df_predictions = pd.DataFrame(y_predicted, index=geo_info.index, columns=["Predictions"])
-    df_predictions.to_csv(DIR_GWR / "predictions.csv")  
-    df_predictions.to_csv(DIR_VAR / "02_gwr/predictions_{}_{:02d}.csv".format(YEAR, MONTH))  
-
-
-
     # Transformed (Gaussian) data
 
     y_predicted_transformed = y_predicted.copy()
@@ -292,6 +283,12 @@ def GWRModel(YEAR, MONTH, VARIABLE_TO_PREDICT):
     pa_gwr.plot_scatter(save_fig=SAVE_FIGS, root_name=DIR_GWR / "gwr_model")
 
     pa_gwr.plot_errors(save_fig=SAVE_FIGS, root_name=DIR_GWR / "gwr_model")
+
+    # Save to csv
+
+    df_predictions = pd.DataFrame(y_predicted.values, index=geo_info.index, columns=["Predictions"])
+    df_predictions.to_csv(DIR_GWR / "predictions.csv")  
+    df_predictions.to_csv(DIR_VAR / "02_gwr/predictions_{}_{:02d}.csv".format(YEAR, MONTH))  
 
     # Original data
 
@@ -501,7 +498,7 @@ def GWRModel(YEAR, MONTH, VARIABLE_TO_PREDICT):
 
     if SAVE_FIGS:
         plt.savefig(DIR_GWR / "gwr_significant_coefficients.svg", format="svg")
-        plt.savefig(DIR_VAR / "02_gwr/significant_coefficients_{}_{_02d}.svg".format(YEAR, MONTH), format="svg")
+        plt.savefig(DIR_VAR / "02_gwr/significant_coefficients_{}_{:02d}.svg".format(YEAR, MONTH), format="svg")
 
 
 
